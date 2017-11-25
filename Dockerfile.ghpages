@@ -1,0 +1,14 @@
+FROM ruby:2.4.2-jessie
+
+
+EXPOSE 4000
+
+RUN mkdir /app
+
+COPY ./ /app
+
+WORKDIR /app/docs/
+
+RUN bundle install
+
+ENTRYPOINT ["jekyll"]
