@@ -7,6 +7,7 @@ COPY ./.git/ ./Gem* ./docs/Gem* /app/
 
 WORKDIR /app/docs/
 
+# Install all the GitHub Pages dependencies
 RUN bundle install
 
 ENTRYPOINT ["jekyll"]
