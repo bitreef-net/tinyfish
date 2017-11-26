@@ -4,14 +4,18 @@
 all: init_venv install_deps ## Build everything needed to run the app
 		PYTHONPATH=venv ; . venv/bin/activate
 
-docs_build:     ## Build a container to serve GitHub Pages locally
-		docker build -f Dockerfile.ghpages . --tag=ghpages:base
 
-docs_serve:     ## Serve the /docs GitHub Pages locally
-		docker run -v $(CURDIR):/app/ -p 4000:4000 ghpages:base serve --host 0.0.0.0
+build: 		## Build a container to serve GitHub Pages locally
+		docker build -f ./TinyFish-DockerFile/Dockerfile . --tag=tinyfish:latest
 
 clean_venv:  	## Delete the virtual environment
 		rm -rf venv
+
+docs_build:     ## Build a container to serve GitHub Pages locally
+		docker build -f ./GHPages-DockerFile/Dockerfile . --tag=ghpages:base
+
+docs_serve:     ## Serve the /docs GitHub Pages locally
+		docker run -v $(CURDIR):/app/ -p 4000:4000 ghpages:base serve --host 0.0.0.0
 
 freeze:		## Version pin all current installed dependencies
 		. venv/bin/activate && venv/bin/pip freeze > requirements.txt
