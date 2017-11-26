@@ -1,5 +1,4 @@
-# Makefile
-#
+# Makefile for TinyFish Project
 #
 
 .PHONY: build
@@ -26,6 +25,4 @@ help:		# Prints help
 run:   		## Run the TinyFish application in a container
 		docker run -p 5000:5000 tinyfish:latest
 
-
 .DEFAULT_GOAL := help
-
