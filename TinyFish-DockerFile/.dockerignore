@@ -1,0 +1,6 @@
+__pycache__
+/docs/
+Makefile
+/venv/
+/GHPages-DockerFile/
+Gemfile*
