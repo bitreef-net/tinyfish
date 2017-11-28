@@ -3,11 +3,11 @@
 
 .PHONY: build
 build: 		## Build a container to serve GitHub Pages locally
-		docker build -f ./TinyFish-DockerFile/Dockerfile . --tag=tinyfish:latest
+		docker build -f ./Python/Dockerfile . --tag=tinyfish:latest
 
 .PHONY: docs_build
 docs_build:     ## Build a container to serve GitHub Pages locally
-		docker build -f ./GHPages-DockerFile/Dockerfile . --tag=ghpages:base
+		docker build -f ./GitHubPages/Dockerfile . --tag=ghpages:base
 
 .PHONY: doc_serve
 docs_serve:     ## Serve the /docs GitHub Pages locally
