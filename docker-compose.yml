@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: ./Python/Dockerfile
+    ports:
+     - "5000:5000"
+  datadog:
+    image: datadog/docker-dd-agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    env_file: 
+      - datadog.env
