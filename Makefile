@@ -9,7 +9,7 @@ build: 		## Build a container to serve GitHub Pages locally
 docs_build:     ## Build a container to serve GitHub Pages locally
 		docker build -f ./GitHubPages/Dockerfile . --tag=ghpages:base
 
-.PHONY: doc_serve
+.PHONY: docs_serve
 docs_serve:     ## Serve the /docs GitHub Pages locally
 		docker run -v $(CURDIR):/app/ -p 4000:4000 ghpages:base serve --host 0.0.0.0
 
