@@ -14,4 +14,4 @@ services:
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
     env_file: 
       - datadog.env
-      
+
