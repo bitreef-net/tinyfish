@@ -7,10 +7,10 @@ services:
 
 before_install:
   - docker build -f ./Nginx/Dockerfile ./Nginx/ --tag=tinyfish:proxy
-  - docker run -d -p 127.0.0.1:5001:80 tinyfish:proxy
+  - docker run -d -p 5001:80 tinyfish:proxy
   - curl -I http://127.0.0.1:5001
   - docker build -f ./Python/Dockerfile . --tag=tinyfish:latest
-  - docker run -d -p 127.0.0.1:80:80 tinyfish:latest 
+  - docker run -d -p 80:80 tinyfish:latest 
 
 install:
   - pip install -r ./app/requirements.txt
