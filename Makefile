@@ -18,6 +18,14 @@ help:		# Prints help
 		@echo "Make Targets:\n"
 		@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+.PHONY: proxy_build
+proxy_build:    ## Build the tinfish nginx proxy container
+		docker build -f ./Nginx/Dockerfile ./Nginx/ --tag=tinyfish:proxy
+
+.PHONY: proxy_run
+proxy_run:	## Run the tinfish nginx proxy container
+		docker run -p 80:80 tinyfish:proxy
+
 .PHONY: run
 run:   		## Run the TinyFish application.  Make sure your datadog api key is in datadog.env
 		docker-compose up
